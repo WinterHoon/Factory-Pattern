@@ -1,13 +1,14 @@
 public class NYStypePizzaStore extends PizzaStore {
     Pizza createPizza(String item) {
+        Pizza pizza = null;
+        PizzaIngredientFactory ingredientFactory = new NYPizzaIngredientFactory();
         if (item.equals("cheese")) {
-            return new NYStyleCheesePizza();
-        } else if (item.equals("veggie")) {
-            return new NYStyleVeggiePizza();
+            pizza =  new CheesePizza(ingredientFactory);
+            pizza.setName("New York Style Cheese Pizza");
         } else if (item.equals("clam")) {
-            return new NYStyleClamPizza();
-        } else if (item.equals("pepperoni")) {
-            return new NYStylePepperoniPizza();
-        } else return null;
+            pizza = new ClamPizza(ingredientFactory);
+            pizza.setName("New York Style clam Pizza");
+        }
+        return pizza;
     }
 }
